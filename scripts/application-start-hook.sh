@@ -2,13 +2,13 @@
 echo "started"
 pwd
 
-cd /home/ec2-user/Portfolio2 && npm install
+cd /home/ubuntu/myapp && npm install
 
-cd /home/ec2-user/Portfolio2 && npm install pm2
+cd /home/ubuntu/myapp && npm install pm2
 
 pwd
 
-cd /home/ec2-user/Portfolio2 && pm2 restart Portfolio2
+cd /home/ubuntu/myapp && pm2 restart Portfolio2
 
 pwd
 
