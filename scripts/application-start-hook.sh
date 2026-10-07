@@ -2,13 +2,17 @@
 echo "started"
 pwd
 
-cd /home/ubuntu/myapp && npm install
+sudo apt update
 
-cd /home/ubuntu/myapp && npm install pm2
+sudo apt install npm -y
+
+cd /home/ubuntu/myapp && sudo npm install
+
+cd /home/ubuntu/myapp && sudo npm install pm2 -g
 
 pwd
 
-cd /home/ubuntu/myapp && pm2 restart Portfolio2
+cd /home/ubuntu/myapp && pm2 start npm --name portfolio -- start
 
 pwd
 
