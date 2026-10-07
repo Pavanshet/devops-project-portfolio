@@ -35,6 +35,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/ubuntu/myapp
-            bash scripts/deploy.sh
+            bash scripts/application-start-hook.sh
             
             
