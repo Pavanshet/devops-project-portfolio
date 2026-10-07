@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+ - source: /
+   destination: /home/ec2-user/Portfolio2
+permissions:
+ - object: /home/ec2-user/Portfolio2
+   pattern: '**'
+   mode: '0755'
+   owner: ec2-user
+   group: ec2-user
+   type:
+     - file
+     - directory
+hooks:
+  
+  ApplicationStart:
+    - location: scripts/application-start-hook.sh
+      timeout: 300
+      runas: ec2-user

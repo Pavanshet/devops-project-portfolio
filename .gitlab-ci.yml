@@ -1,0 +1,28 @@
+default:
+    image: docker:24.0.5
+    services:
+      -docker:24.0.5-dind
+    before_script:
+      -docker info  
+ 
+stages:
+  - build
+  - deploy
+
+build_job:
+  stage: build
+  script: |
+    echo "Building the application"
+    docker login -u $DockerUserName -p $DockerPwd  
+    docker build -t alpha1700/portfolio .
+    docker push alpha1700/portfolio 
+deploy_job:
+  stage: deploy
+  script: |
+    docker pull alpha1700/portfolio
+    docker rm -f nodejs-app-conatiner
+    docker run -d -p 3000:3000 --name nodejs-app-conatiner alpha1700/portfolio 
+  tags: 
+    - ec2-runner
+  only: 
+    - deploy-to-ec2
